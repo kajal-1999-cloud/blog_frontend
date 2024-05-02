@@ -1,0 +1,75 @@
+.register {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    /* background-image: url('../../assets/bg4.jfif'); */
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+width: 100%;
+}
+.register .wrapper{
+    height: 60vh;
+    width: 27.5vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+.register .wrapper > h2{
+    color: rgb(59, 122, 138);
+    text-align: center;
+    margin: 2.5rem 0;
+    font-size: 36px;
+}
+.register form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+}
+.register form > input{
+    width: 50%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+.register form > button{
+    outline: none;
+    background-color: rgb(59, 122, 138);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.register form > button:hover{
+    background-color: #fff;
+    border-color: blue;
+    color: blue;
+}
+.register form > p{
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.register form > p > a{
+    text-decoration: none;
+    font-size: 17px;
+    color: #888;
+    margin-top: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .register .wrapper{
+        height: 70vh;
+        width: 60vw;
+        
+       
+    }
+}

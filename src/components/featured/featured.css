@@ -1,0 +1,196 @@
+.featured {
+    margin-top: 2rem; 
+}
+.featured h3{
+    text-align: center;
+}
+.featured .wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.featured .wrapper > h3{
+    margin-bottom: 1.5rem;
+    font-size: 36px;
+    color:rgb(59, 122, 138);
+    font-weight: bold;
+}
+.featured .wrapper > .blogs{
+    display: flex;
+   justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+}
+.featured .left{
+    width: 60%;
+    height: 100%;
+}
+.featured .left > .mainBlog{
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,1));
+    /* padding: 1rem; */
+    position: relative;
+}
+.featured .left > .mainBlog > img{
+    height: 100%;
+    width: 100%;
+    /* object-fit: cover; */
+    position: relative;
+}
+.featured .left  .blogData{
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,1));
+    opacity: .9;
+}
+.featured .categoryData{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+.featured .category{
+    border: 1px solid #fff;
+    color: white;
+    background-color: rgb(112, 151, 138);
+    border-radius: 12px;
+    padding: 0.25rem 1.25rem;
+}
+.featured .data{
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 0.25rem;
+}
+.featured .left > .mainBlog  .mainBlogData{
+    position: absolute;
+    bottom: .1rem;
+    color: #fff;
+}
+.featured .blogs .left .blogImage a img{
+    width: 100%;
+    height: 100%;
+}
+.featured  .textData{
+ margin: 1rem;
+}
+.featured .left > .mainBlog h2{
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+   
+}
+.featured .blogDesc{
+    font-size: 18px;
+    color: #e2dede;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.featured .left .authorTime{
+    display: flex;
+    margin: 0.3rem auto;
+    justify-content: space-between;
+}
+.featured .left > .mainBlog > .mainBlogData > .authorAndCreatedAt > span > span{
+    font-size: 17px;
+    color: #efefef;
+    font-weight: bold;
+}
+.featured .right{
+     width: 28%;
+    height: 100%;
+    padding: 1.5rem;
+    
+}
+
+.featured .right .secondaryBlog{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: .8;
+    gap: 5rem;
+    margin: 1rem 0;
+    position: relative;
+}
+.featured .right > .secondaryBlog img{
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+}
+.featured .secondaryBlogData{
+    width: 100%;
+    position: absolute;
+    bottom: .1rem;
+    /* padding: 0 1rem; */
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,1));
+}
+.featured .secondaryBlogData  h4{
+    font-size: 26px;
+    /* position: absolute; */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-bottom: .3rem;
+    font-weight: bold;
+    color: #fff;
+}
+.featured .secondaryBlogData  .desc{
+    color: #e4dede;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+} 
+.featured .right .authorTime{
+    color: rgb(241, 234, 234);
+    overflow: hidden;
+    margin:  .4rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen  and (max-width: 768px){
+    .featured .right .secondaryBlog{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+
+    }
+    .featured .wrapper > .blogs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .featured .left{
+        width: 92%;
+        height: 100%;
+    }
+    .featured .right{
+        width: 90%;
+        padding: 1rem;
+       height: 100%;
+       display: flex;
+       justify-content: center;
+       gap: 1rem;
+   }
+   .featured .right a{ 
+      width: 100%;
+   }
+   .featured .secondaryBlog img {
+    width: 200px; /* Set the width of the image */
+    height: 200px; /* Set the height of the image */
+    object-fit: cover; /* Ensure the image covers the entire container */
+  }
+   .featured .right .desc{
+    display: none;
+}
+}

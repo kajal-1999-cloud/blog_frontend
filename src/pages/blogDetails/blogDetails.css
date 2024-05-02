@@ -1,0 +1,125 @@
+.blogDetails .container {
+    /* min-height: calc(100vh - 60px); */
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.blogDetails .wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.blogDetails .goBack {
+    position: absolute;
+    text-decoration: none;
+    color: #222;
+    top: 1.5rem;
+    left: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+.blogDetails .goBack p{
+font-size: 1rem;
+}
+
+.blogDetails .wrapper>img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.blogDetails .titleAndControls {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blogDetails .controls {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.blogDetails .controls>.edit {
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    border-radius: 12px;
+    background-color: green;
+    color: #fff;
+}
+
+.blogDetails .controls>.delete {
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    border-radius: 12px;
+    background-color: #f00;
+    color: #fff;
+}
+
+.blogDetails .like {
+    cursor: pointer;
+    padding: 0.4rem 0.75rem;
+    border-radius: 12px;
+    background-color: blue;
+    color: #fff;
+    margin: 2rem 1rem;
+}
+
+.blogDetails .title {
+    font-size: 30px;
+    color: #000;
+    text-transform: capitalize;
+}
+
+.blogDetails .descAndLikesViews {
+    margin-top: 0.5rem;
+    display: flex;
+    /* justify-content: space-between;
+     */
+    flex-direction: column;
+    align-items: center;
+}
+
+.blogDetails .desc {
+    margin-top: 2.5rem;
+    color: #333;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.75px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blogDetails .desc>span {
+    color: #000;
+    font-size: 22px;
+    margin-bottom: 0.5rem;
+}
+
+.blogDetails .likesAndViews {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+padding: 1rem;  
+  align-items: flex-end;
+    gap: 2rem;
+}
+
+.blogDetails .authorAndCreatedAt {
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    font-size: 18px;
+}
+
+.blogDetails .authorAndCreatedAt>span>span {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}

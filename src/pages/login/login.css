@@ -1,0 +1,67 @@
+.login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-blend-mode: darken;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.login .wrapper{
+    height: 68vh;
+    width: 30vw;
+    border-radius: .2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+.login .wrapper > h2{
+    color:rgb(59, 122, 138);
+    text-align: center;
+    margin: 2.5rem 0;
+    font-size: 36px;
+}
+.login form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.8rem;
+}
+.login form > input{
+    width: 60%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #333;
+}
+.login form > button{
+    outline: none;
+    background-color: rgb(119, 88, 148);
+    color: #fff;
+    border-radius: .2rem;
+    padding: 0.5rem 2rem;
+    font-size: 18px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-top: 1rem;
+}
+.login form>button:hover{
+    background-color: #fff;
+    border-color: blue;
+    color: blue;
+}
+
+
+@media screen and (max-width: 768px) {
+    .login .wrapper{
+        height: 62vh;
+        width: 60vw;
+        /* border-radius: 20px; */
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+    }
+}
