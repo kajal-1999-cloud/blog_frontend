@@ -4,15 +4,12 @@ import { FiSend } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 const Contact = () => {
   const [email, setEmail] = useState('')
-
-
   const handleMail = (e) => {
     e.preventDefault()
     if(email === ""){
       toast.error('please fill the field')
     }
     if (email.includes("@gmail.com")) {
-
 toast.success('email sent successfully')
       localStorage.setItem('email', email)
       console.log("email", email)
@@ -21,7 +18,6 @@ toast.success('email sent successfully')
       toast.error('please fill right email')
       return
     }
-
   }
   return (
     <div className='contacts' id='contacts'>
