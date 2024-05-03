@@ -29,9 +29,7 @@ const Categories = () => {
       try {
         const data = await request('/blog/AllBlog', 'GET')
         setBlogs(data)
-        // console.log("blogData", blogs)
         setFilteredBlogs(data)
-        // console.log("filtered", filteredBlogs)
 
       } catch (error) {
         console.error(error)
