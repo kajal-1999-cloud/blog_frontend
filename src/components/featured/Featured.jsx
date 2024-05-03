@@ -41,7 +41,7 @@ const FeaturedBlogs = () => {
                   <div className="mainBlog">
                     <div className='blogImage'>
                       <Link to={`/blogDetails/${blogElement?._id}`} className='link'>
-                        <img src={`http://localhost:5000/images/${blogElement?.photo}`} />
+                        <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} />
                       </Link>
 
                     </div>
@@ -75,7 +75,7 @@ const FeaturedBlogs = () => {
               return (
                   <div className="secondaryBlog">
                     <Link to={`/blogDetails/${blogElement?._id}`} className='link'>
-                      <img src={`http://localhost:5000/images/${blogElement?.photo}`} />
+                      <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} />
                     </Link>  <div className="secondaryBlogData">
                       <div className='textData'>
                         <div className='categoryData'>

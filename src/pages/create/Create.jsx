@@ -40,7 +40,7 @@ const Create = () => {
         formData.append("filename", fileName)
         formData.append('image', img)
 
-        await fetch(`http://localhost:5000/upload`, {
+        await fetch(`https://blog-backend-4y52.onrender.com/upload`, {
           method: 'POST',
           body: formData
         })

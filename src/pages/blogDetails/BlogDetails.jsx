@@ -56,7 +56,7 @@ function BlogDetails() {
         <Link to='/' className='goBack'>
          <AiOutlineArrowLeft className='arrow'/>  Go Back 
         </Link>
-          <img src={`http://localhost:5000/images/${blogDetails?.photo}`} />
+          <img src={`https://blog-backend-4y52.onrender.com/images/${blogDetails?.photo}`} />
           <div className='titleAndControls'>
             <h3 className='title'>{blogDetails?.title}</h3>
             {blogDetails?.userId?._id === user._id ?

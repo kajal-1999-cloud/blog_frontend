@@ -74,7 +74,7 @@ const Categories = () => {
                  <div className='flex'>
                  <div className='blogImage'>
                  <Link to={`/blogDetails/${blog?._id}`} className='link'>
-                    <img src={`http://localhost:5000/images/${blog?.photo}`} />
+                    <img src={`https://blog-backend-4y52.onrender.com/images/${blog?.photo}`} />
                   </Link>
                   <div className="categorydata">
                       <span className="category">{blog?.category}</span>
