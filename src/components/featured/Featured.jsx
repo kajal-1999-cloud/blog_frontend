@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './featured.css'
-import nature from '../../assets/Nature.jpg'
-import nature2 from '../../assets/Nature2.jpg'
 import { MdOutlinePreview } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
 import { request } from '../../utils/fetchApi'
@@ -31,9 +29,9 @@ const FeaturedBlogs = () => {
 
   return (
     <div className="featured" id='featured'>
-      {featured &&
         <div className="wrapper">
           <h3>FEATURED BLOGS<hr /></h3>
+          {featured &&
           <div className="blogs">
             {featured && featured.slice(0, 1).map((blogElement, index) => {
               return (
@@ -102,8 +100,8 @@ const FeaturedBlogs = () => {
 
 </div>
           </div>
-        </div>
       }
+        </div>
     </div>
   )
 }

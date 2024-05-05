@@ -23,7 +23,7 @@ const navigate = useNavigate()
     <div className='navbar'>
       <div className='wrapper'>
         <div className='left'>
-          <Link to='/'>BLOG</Link>
+          <Link to='/'><span>8</span>loggerSpace</Link>
         </div>
         <ul className='center'>
           <li className='listItem'><a href='#featured'>HOME</a></li>
