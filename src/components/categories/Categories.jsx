@@ -8,11 +8,15 @@ import { Link } from 'react-router-dom'
 import { MdOutlinePreview } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
 import { FiArrowRight } from 'react-icons/fi'
+import { CiMenuFries } from "react-icons/ci";
+import Loader from '../../components/loader/loader'
 
 const Categories = () => {
   const [blogs, setBlogs] = useState([])
   const [filteredBlogs, setFilteredBlogs] = useState([])
   const [activeCategory, setActiveCategory] = useState('all')
+  const [menuBar, setMenuBar] = useState(false)
+
   const categories = [
     'all',
     'nature',
@@ -30,7 +34,7 @@ const Categories = () => {
         const data = await request('/blog/AllBlog', 'GET')
         setBlogs(data)
         setFilteredBlogs(data)
-
+        console.log("blogs length",Boolean(blogs))
       } catch (error) {
         console.error(error)
       }
@@ -44,19 +48,21 @@ const Categories = () => {
     } else {
       setFilteredBlogs((prev) => {
         const filteredBlogs = blogs.filter((blog) => blog.category.toLowerCase() === activeCategory.toLowerCase())
-
         return filteredBlogs
       })
     }
   }, [activeCategory])
 
-
+const toggleMenu = () => {
+  setMenuBar(prev => !prev)
+}
+  
   return (
     <div className="category" id="categories">
       <div className="container">
-        <h3>SELECT A CATEGORY </h3> <hr/>
+        <h3>CATEGORIES </h3> <hr/>
         <div className="categoriesBlog">
-          <div className="categories">
+          <div className="categories laptopVeiw">
             {categories.map((category) => (
               <span
                 key={crypto.randomUUID()}
@@ -67,8 +73,30 @@ const Categories = () => {
               </span>
             ))}
           </div>
-          {filteredBlogs?.length > 0 ?
-            <div className="blogs">
+         <div className="selectCategory ">
+         <span className="select mobileVeiw"> SELECT CATEGORY  </span>
+          <CiMenuFries className="mobileVeiw" onClick={toggleMenu}/>
+         </div>
+
+         {menuBar && 
+          (<div className="categories mobileVeiw">
+            {categories.map((category) => (
+              <span
+                key={crypto.randomUUID()}
+                className={`mobileVeiw categorylist ${activeCategory === category && 'active'}`}
+                onClick={() => setActiveCategory(prev => category)}
+              >
+                {category.toUpperCase()}
+              </span>
+            ))}
+          </div>
+          )
+          
+          }
+
+         {blogs.length !== 0 ? 
+          ( filteredBlogs && filteredBlogs?.length > 0 ?
+            (<div className="blogs">
               {filteredBlogs?.map((blog) => (
                 <div key={blog._id} className= "blog">
                  <div className='flex'>
@@ -107,8 +135,10 @@ const Categories = () => {
                 </div>
             
           ))}
-            </div>
-            : <h3 className="noBlogsMessage">No blogs</h3>}
+            </div>)
+            : (<h3 className="noBlogsMessage">No blogs </h3>)) : (<Loader/>)
+}
+            
         </div>
 
       </div>

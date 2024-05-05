@@ -9,10 +9,11 @@ import { logout } from '../../redux/authSlice'
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false)
-const dispatch = useDispatch()
-const navigate = useNavigate()
+  const [menuBar, setMenuBar] = useState(false)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     setShowModal(false);
     dispatch(logout())
     console.log("user Logged out")
@@ -23,23 +24,35 @@ const navigate = useNavigate()
     <div className='navbar'>
       <div className='wrapper'>
         <div className='left'>
-          <Link to='/'><span>8</span>loggerSpace</Link>
+          <Link to='/'><span>B</span>loggerSpace</Link>
         </div>
-        <ul className='center'>
+        <ul className='center laptopVeiw'>
           <li className='listItem'><a href='#featured'>HOME</a></li>
           <li className='listItem'><a href='#categories' >CATEGORIES</a></li>
           <li className='listItem'><a href='#contacts'>CONTACTS</a></li>
-          <li  className='listItem'> <Link to='/create' className='create'>CREATE</Link></li>
+          <li className='listItem'> <Link to='/create' className='create'>CREATE</Link></li>
         </ul>
         <div className='right'>
-          <img  src={womanImg} className='img'/>
-          <IoIosArrowDown onClick={() => setShowModal(prev => !prev)}/>
+          <img src={womanImg} className='img' />
+          <IoIosArrowDown className="laptopVeiw" onClick={() => setShowModal(prev => !prev)} />
           {showModal &&
-            <div className='modal'>
-             
-              <p style={{cursor : 'pointer'}} onClick={handleLogout}>LOGOUT</p>
+            <div className='modal laptopVeiw'>
+              <p style={{ cursor: 'pointer' }} onClick={handleLogout}>LOGOUT</p>
             </div>
           }
+          <IoIosArrowDown className="mobileVeiw" onClick={() => setMenuBar(prev => !prev)} />
+          {menuBar &&
+            <div className='modal mobileVeiw'>
+              <ul className='center mobileVeiw'>
+                <li className='listItem'><a href='#featured'>HOME</a></li>
+                <li className='listItem'><a href='#categories' >CATEGORIES</a></li>
+                <li className='listItem'><a href='#contacts'>CONTACTS</a></li>
+                <li className='listItem'> <Link to='/create' className='create'>CREATE</Link></li>
+                <li className='listItem' onClick={handleLogout}> LOGOUT</li>
+              </ul>
+            </div>
+          }
+
         </div>
       </div>
     </div>

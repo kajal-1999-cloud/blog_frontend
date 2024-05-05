@@ -1,39 +1,44 @@
-import React from 'react'
-import './footer.css'
+import React from "react";
+import "./footer.css";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import EmailIcon from "@mui/icons-material/Email";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-const Footer = () => {
+function Footer() {
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
   return (
-    <footer>
-      <div className='footer'>
-        <hr/>
-        <div className='col'>
-
-          <h2>About the App</h2>
-        <hr/>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Possimus quo voluptatum, ullam quam perspiciatis deleniti obcaecati architecto,
-            sed minus culpa autem suscipit rem vero voluptas alias animi. Iure, eaque dicta!
-          </p>
-        </div>
-
-        <div className='col'>
-
-          <h2>Contacts</h2>
-        <hr/>
-          <span>Phone: +91 1234567890</span>
-         <a href='https://www.linkedin.com/in/kajal-gupta1401/'>LinkedIn</a>
-          <a href='https://github.com/kajal-1999-cloud'>GitHub</a>
-        </div>
-        <div className='col'>
-      
-          <h2>Location</h2>
-        <hr/>
-          <span>Continent: Asia</span>
-          <span>Country: India</span>
-        </div>
+    <div className="">
+      <div className="footer">
+      <h2 className="logo" onClick={() => topFunction()}>
+        BloggerSpace<span>.</span>
+      </h2>
+      <div className="social-links">
+      <a href="https://github.com/kajal-1999-cloud" target="_blank" >
+          <GitHubIcon className="social-link" />
+        </a>
+        <a href="/" target="_blank">
+          <FacebookIcon className="social-link" />
+        </a>
+        <a href="mailto:kajalg1401@gmail.com" target="_blank">
+          <EmailIcon className="social-link" />
+        </a>
+        <a href="/" target="_blank">
+          <TwitterIcon className="social-link" />
+        </a>
+        <a href="https://www.instagram.com/kajalg1401/" target="_blank" >
+  
+          <InstagramIcon className="social-link" />
+        </a>
       </div>
-    </footer>
-  )
+      </div>
+    
+    </div>
+  );
 }
 
-export default Footer
+export default Footer;

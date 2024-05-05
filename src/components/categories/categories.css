@@ -8,7 +8,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 1.5rem;
+    justify-content: center;
+    margin: 0 2rem;
 }
 
 .category .container>h3 {
@@ -20,18 +21,20 @@
 .category .categoriesBlog {
     display: flex;
     padding-top: 1rem;
-    border-top: 1px solid black;
     flex-direction: column;
+    margin: 1rem;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
     border-top: 1px solid black;
 }
-
+.category .mobileVeiw{
+    display: none;
+}
 .category .categories {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 3em;
+    gap: 2em;
     color: #333;
 }
 
@@ -73,7 +76,6 @@
 }
 
 .category .blog img {
-
     height: 100%;
     width: 100%;
 }
@@ -82,12 +84,12 @@
     padding: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
     margin-bottom: 1.25rem;
     flex: 2;
-    width: 50%;
+    /* width: 50%; */
 }
-
 .category .blog .category {
     cursor: pointer;
     border-radius: 12px;
@@ -95,24 +97,20 @@
     border: 1px solid #222;
     text-transform: capitalize;
 }
-
 .category .data {
     display: flex;
     align-items: center;
     gap: 0.25rem;
 }
-
 .category .blogs .blog .blogData {
     color: #000;
     width: 80%;
     padding: 0 1rem;
 }
-
 .category .blogs .blog h4 {
     font-size: 38px;
     margin-bottom: 1.8rem;
 }
-
 .category .blogDesc {
     font-size: 20px;
     color: #444;
@@ -124,12 +122,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 .category .authorAndCreatedAt {
     color: #444;
     padding: 0 1rem;
     margin-top: 2rem;
-
     display: flex;
     justify-content: space-between;
 }
@@ -165,6 +161,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .category  .laptopVeiw{
+        display: none;
+    }
+   .category .mobileVeiw{
+        display: block;
+    }
     .category .blog .flex {
         display: flex;
         flex-direction: column;
@@ -174,7 +176,7 @@
         padding: 2rem 0;
         margin-bottom: 2rem;
     }
-
+      
     .category .blog .flex .blogImage .link {
         display: flex;
         justify-content: center;
@@ -189,10 +191,20 @@
     }
 
     .category .blogs .blog .blogData {
-        margin: 0 9rem;
+        /* margin: 0 9rem; */
     }
-
+    .category .selectCategory{
+        font-size: 1.4rem;
+    }
+   .category .selectCategory{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+   }
     /* .category .blogs .blog .blogData .blogDesc {
         padding: 0 1.2rem;
     } */
+    .categories .categorylist{
+        margin: .2rem;
+    }
 }

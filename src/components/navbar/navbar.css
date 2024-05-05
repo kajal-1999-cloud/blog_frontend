@@ -4,12 +4,18 @@
     width: 100%;
     position: sticky;
     top: 0;
-    background: linear-gradient(to bottom, rgb(92, 86, 86), rgb(8, 8, 8));
-
+    /* background: linear-gradient(to bottom, rgb(92, 86, 86), rgb(8, 8, 8)); */
+    background: linear-gradient(
+        90deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgb(70, 74, 85) 0%,
+        rgb(190, 205, 207) 100%
+      );
     left: 0;
     border-bottom: 1px solid #777;
     background-color: #000;
     z-index: 999;
+    color: black;
 }
 .navbar .wrapper{
     height: 100%;
@@ -19,35 +25,49 @@
     align-items: center;
 }
 
+.navbar .displayVeiw{
+    display: block;
+   
+}
 /* left */
 .navbar .left{
     font-size: 28px;
     font-weight: bold;
+    color: black;
+
 }
 
 .navbar .left > a{
     text-decoration: none;
-    color: #fff;
+    color: white;
+
 }
-/* center */
+.navbar .left > a span{
+   font-size: 38px;
+}
 .navbar .center{
     display: flex;
     align-items: center;
+    justify-content: space-around;
     list-style: none;
     gap: 1.5rem;
 }
+.navbar .mobileVeiw{
+    display: none;
+}
 
 .navbar .listItem{
-    color: #fff;
+
     cursor: pointer;
     transition: 150ms all;
 }
 .navbar .listItem a{
+    font-weight: bold;
     color: white;
+
     text-decoration: none;
 }
 .navbar .listItem .create{
-    color: white;
     text-decoration: none;
 }
 
@@ -92,4 +112,40 @@
 .navbar .right > .modal > a{
     text-decoration: none;
     color: #fff;
+}
+
+@media screen  and (max-width: 768px){
+
+    .navbar .laptopVeiw{
+        display: none;
+       
+    }
+    
+    .navbar .mobileVeiw{
+        display: block;
+       
+    }
+    .navbar .modal{
+        height: 18rem;
+        width: 20rem;
+        position: absolute;
+        top: 4.2rem;
+        background-color: rgb(155, 196, 182);
+        color: black;
+        text-align: left;
+        right: .2rem;
+        gap: 1rem;
+    }
+    .navbar .modal .listItem a {
+        text-align: left;
+        color: black;
+    gap: 4rem;
+    }    
+    .navbar .modal .listItem{
+        background-color: azure;
+        padding:1rem 3rem;
+        border: 1px solid black;
+        color: black;
+        margin: .3rem;
+    }
 }
