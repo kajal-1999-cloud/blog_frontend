@@ -3,30 +3,46 @@ import './featured.css'
 import { MdOutlinePreview } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
 import { request } from '../../utils/fetchApi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/loader'
 import { format } from 'timeago.js'
 import defaultPic1 from '../../assets/defaultPic1.jpg'
 import defaultPic3 from '../../assets/defaultPic3.jpg'
 import defaultPic2 from '../../assets/defaultPic2.jpg'
-
+import { useSelector } from 'react-redux'
+import { message } from 'antd';
 const FeaturedBlogs = () => {
+  const {user} = useSelector((state) => state.auth)
   const [featured, setfeatured] = useState()
+  const navigate = useNavigate()
 
-
+  useEffect(() => {
+    if (window.AOS) {
+      window.AOS.init({ duration: 3000 });
+    }
+  }, []);
+ const handleBlogDetails = (id) => {
+  if(!user){
+    message.warning("please login to view details" )
+    navigate("/login")
+  }else{
+    navigate(`/blogDetails/${id}`)
+  }
+ }
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const options = { 'Content-Type': 'Application/json' }
         const data = await request('/blog/featured', 'GET', options)
-        setfeatured(data)
+        setTimeout(()=>{
+          setfeatured(data)               
+          },2700)
         console.log("featured", data)
-
       } catch (error) {
         console.log(error)
       }
       console.log('featured', featured)
-
     }
     fetchData()
   }, [])
@@ -34,18 +50,20 @@ const FeaturedBlogs = () => {
   return (
     <div className="featured" id='featured'>
       <div className="wrapper">
-        <h3>FEATURED BLOGS<hr /></h3>
+        <h3>FEATURED BLOGS</h3>
         {featured ?
 
         (<div className="blogs"> 
          {featured && featured.slice(0, 1).map((blogElement, index) => {
         return ( 
               <div className="left">
-                  <div className="mainBlog">
+                  <div className="mainBlog" data-aos="zoom-in">
                     <div className='blogImage'>
-                      <Link to={`/blogDetails/${blogElement?._id}`} className='link'>
+                     <div onClick={()=>handleBlogDetails(blogElement?._id)}>
+                         <Link to='' className='link'>
                         <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} />
                       </Link>
+                      </div>
                     </div>
                     <div className="mainBlogData">
                       <div className='textData'>
@@ -73,9 +91,11 @@ const FeaturedBlogs = () => {
        <div className="right">
           {featured && featured.slice(1).map((blogElement, index) => {
            return (
-              <Link to={`/blogDetails/${blogElement?._id}`} className='link'>
+            <div  onClick={()=>handleBlogDetails(blogElement?._id)}> 
 
-              <div key={index} className="secondaryBlog">
+              <Link to="" className='link'>
+
+              <div key={index} className="secondaryBlog" data-aos="fade-up">
                    
                   <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} alt='img...'/>
                  
@@ -102,16 +122,17 @@ const FeaturedBlogs = () => {
                 </div>
              </div>
               </Link> 
+              </div>
                 );
               })}
 
             </div>
           </div>)
          :
-        //  default pics 
+        //  default pics  if data is not showing ...
        ( <div className="blogs">
           <div className="left">
-            <div className="mainBlog">
+            <div className="mainBlog" data-aos="zoom-in">
               <div className='blogImage'>
                 <Link to='' className='link'>
                   <img src={defaultPic1} />
@@ -144,7 +165,7 @@ const FeaturedBlogs = () => {
 
             <Link to='' className='link'>
 
-              <div className="secondaryBlog">
+              <div className="secondaryBlog" data-aos="fade-down">
 
                 <img src={defaultPic2} alt='img...' />
                        
@@ -173,7 +194,7 @@ const FeaturedBlogs = () => {
             </Link>
             <Link to='' className='link'>
 
-              <div className="secondaryBlog">
+              <div className="secondaryBlog" data-aos="fade-up">
 
                 <img src={defaultPic3} alt='img...' />
                     
@@ -207,5 +228,4 @@ const FeaturedBlogs = () => {
     </div>
   )
 }
-
 export default FeaturedBlogs

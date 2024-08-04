@@ -54,12 +54,17 @@
 .category .blogs {
     display: flex;
     flex-direction: column;
-
+    align-items: center;
+    justify-content: center;
 }
 
-.category .blog {
-    border: 4px solid rgb(165, 181, 182);
-    margin: 1rem;
+.category .blog { 
+    zoom: 0.8;
+    width: 80%;
+    background-color: white;
+    /* border: 4px solid rgb(165, 181, 182); */
+    box-shadow: 2px 3px 10px rgb(224, 224, 224);
+    margin: 2.6rem;
     cursor: pointer;
 }
 

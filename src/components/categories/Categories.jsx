@@ -4,18 +4,24 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { request } from '../../utils/fetchApi'
 import { format } from 'timeago.js'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlinePreview } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
 import { FiArrowRight } from 'react-icons/fi'
 import { CiMenuFries } from "react-icons/ci";
 import Loader from '../../components/loader/loader'
+import { useSelector } from 'react-redux'
+import { message } from 'antd'
+
 
 const Categories = () => {
   const [blogs, setBlogs] = useState([])
   const [filteredBlogs, setFilteredBlogs] = useState([])
   const [activeCategory, setActiveCategory] = useState('all')
   const [menuBar, setMenuBar] = useState(false)
+
+  const {user} = useSelector((state) => state.auth)
+  const navigate = useNavigate()
 
   const categories = [
     'all',
@@ -28,6 +34,12 @@ const Categories = () => {
     'fashion'
   ]
 
+  useEffect(() => {
+    // Initialize AOS
+    if (window.AOS) {
+      window.AOS.init({ duration: 1000 });
+    }
+  }, []);
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -57,10 +69,19 @@ const toggleMenu = () => {
   setMenuBar(prev => !prev)
 }
   
+const handleBlogDetails = (id) => {
+  if(!user){
+    message.warning("please login to view details" )
+    navigate("/login")
+  }else{
+    navigate(`/blogDetails/${id}`)
+  }
+ }
+ 
   return (
     <div className="category" id="categories">
       <div className="container">
-        <h3>CATEGORIES </h3> <hr/>
+        <h3>CATEGORIES </h3> 
         <div className="categoriesBlog">
           <div className="categories laptopVeiw">
             {categories.map((category) => (
@@ -97,11 +118,12 @@ const toggleMenu = () => {
          {blogs.length !== 0 ? 
           ( filteredBlogs && filteredBlogs?.length > 0 ?
             (<div className="blogs">
-              {filteredBlogs?.map((blog) => (
-                <div key={blog._id} className= "blog">
-                 <div className='flex'>
-                 <div className='blogImage'>
-                 <Link to={`/blogDetails/${blog?._id}`} className='link'>
+              {filteredBlogs?.map((blog) => (                
+                <div key={blog._id} className= "blog" data-aos="fade-up" >
+                 <div className='flex' onClick={()=>handleBlogDetails(blog?._id)}>
+                 <div className='blogImage' >
+
+                 <Link to="" className='link'>
                     <img src={`https://blog-backend-4y52.onrender.com/images/${blog?.photo}`} />
                   </Link>
                   <div className="categorydata">
@@ -131,9 +153,8 @@ const toggleMenu = () => {
                     </div>
                   </div>
                  </div>
-            <hr/>
-                </div>
-            
+  
+                </div>          
           ))}
             </div>)
             : (<h3 className="noBlogsMessage">No blogs </h3>)) : (<Loader/>)
