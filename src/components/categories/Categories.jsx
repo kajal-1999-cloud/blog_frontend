@@ -37,7 +37,8 @@ const Categories = () => {
   useEffect(() => {
     // Initialize AOS
     if (window.AOS) {
-      window.AOS.init({ duration: 1000 });
+      window.AOS.init({ duration:800,  offset: 50,   // adjust height before animation triggers
+  easing: "ease-in-out",once: true,   });
     }
   }, []);
   useEffect(() => {
