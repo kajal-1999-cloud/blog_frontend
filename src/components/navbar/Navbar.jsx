@@ -27,13 +27,14 @@ const Navbar = () => {
   }
 
 
-  const handleBlogDetails = () => {
-    if(!user){
-      message.warning("please login to view details" )
-    }else{
-      navigate(`/create`)
+  const handleCreate = () => {
+    if (!user) {
+      message.warning("please login to create a blog")
+      navigate("/login")
+    } else {
+      navigate("/create")
     }
-   }
+  }
  
   return (
     <div className='navbar'>
@@ -80,7 +81,7 @@ const Navbar = () => {
                 <div className='underline'></div>
                 <li className='listItem'><a href='#contacts'>CONTACTS</a></li>
                 <div className='underline'></div>
-                <li className='listItem' onClick={handleBlogDetails}> <Link to='/create' className='create'>CREATE</Link></li>
+                <li className='listItem' onClick={handleCreate}> <Link to='/create' className='create'>CREATE</Link></li>
                 <div className='underline'></div>
                 <li className='listItem' onClick={handleLogout}> LOGOUT</li>
                 </ul>

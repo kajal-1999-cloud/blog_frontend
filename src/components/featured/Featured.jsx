@@ -9,11 +9,8 @@ import { format } from 'timeago.js'
 import defaultPic1 from '../../assets/defaultPic1.jpg'
 import defaultPic3 from '../../assets/defaultPic3.jpg'
 import defaultPic2 from '../../assets/defaultPic2.jpg'
-import { useSelector } from 'react-redux'
-import { message } from 'antd';
 const FeaturedBlogs = () => {
-  const {user} = useSelector((state) => state.auth)
-  const [featured, setfeatured] = useState()
+  const [featured, setfeatured] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -22,12 +19,7 @@ const FeaturedBlogs = () => {
     }
   }, []);
  const handleBlogDetails = (id) => {
-  if(!user){
-    message.warning("please login to view details" )
-    navigate("/login")
-  }else{
-    navigate(`/blogDetails/${id}`)
-  }
+  navigate(`/blogDetails/${id}`)
  }
  
   useEffect(() => {
@@ -35,10 +27,18 @@ const FeaturedBlogs = () => {
       try {
         const options = { 'Content-Type': 'Application/json' }
         const data = await request('/blog/featured', 'GET', options)
-        setTimeout(()=>{
-          setfeatured(data)               
-          },2700)
-        console.log("featured", data)
+        const featuredData = Array.isArray(data)
+          ? data
+          : Array.isArray(data?.blogs)
+          ? data.blogs
+          : Array.isArray(data?.featured)
+          ? data.featured
+          : []
+
+        setTimeout(() => {
+          setfeatured(featuredData)
+        }, 2700)
+        console.log("featured response", data)
       } catch (error) {
         console.log(error)
       }
@@ -51,10 +51,10 @@ const FeaturedBlogs = () => {
     <div className="featured" id='featured'>
       <div className="wrapper">
         <h3>FEATURED BLOGS</h3>
-        {featured ?
+        {Array.isArray(featured) && featured.length > 0 ?
 
         (<div className="blogs"> 
-         {featured && featured.slice(0, 1).map((blogElement, index) => {
+         {featured.slice(0, 1).map((blogElement, index) => {
         return ( 
               <div className="left">
                   <div className="mainBlog" data-aos="zoom-in">
@@ -89,7 +89,7 @@ const FeaturedBlogs = () => {
           );
         })} 
        <div className="right">
-          {featured && featured.slice(1).map((blogElement, index) => {
+          {featured.slice(1).map((blogElement, index) => {
            return (
             <div  onClick={()=>handleBlogDetails(blogElement?._id)}> 
 

@@ -4,12 +4,9 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { toast, ToastContainer } from 'react-toastify';
-  import { request } from '../../utils/fetchApi'
-import { message } from 'antd'
+import { request } from '../../utils/fetchApi'
 
 const Create = () => {
-  const {user} = useSelector((state) => state.auth)
-
   const [title, setTitle] = useState("")
   const [desc, setDesc] = useState("")
   const [img, setImg] = useState("")
@@ -26,15 +23,6 @@ const Create = () => {
     'Spritual',
     'health'
   ]
-   
-  const handleBlogDetails = (id) => {
-    if(!user){
-      message.warning("please login to view details" )
-      navigate("/login")
-    }else{
-      navigate(`/blogDetails/${id}`)
-    }
-   }
    
   const onChangeFile = (e) => {
     setImg(e.target.files[0])

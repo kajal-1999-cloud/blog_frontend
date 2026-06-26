@@ -20,7 +20,7 @@ function App() {
         <Route path='/login' element={ <Login /> } />
         <Route path='/register' element={ <Register />} />
         <Route path='/create' element={user ?  <Create /> : <Navigate to={'/login'} /> } />
-        <Route path='/blogDetails/:id' element={user ? <BlogDetails /> : <Navigate to={'/login'} /> } />
+        <Route path='/blogDetails/:id' element={<BlogDetails />} />
         <Route path='/updateBlog/:id' element={user?  <UpdateBlog /> : <Navigate to={'/login'} /> } />
       </Routes>
     </div>

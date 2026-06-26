@@ -10,17 +10,12 @@ import { AiFillLike } from 'react-icons/ai'
 import { FiArrowRight } from 'react-icons/fi'
 import { CiMenuFries } from "react-icons/ci";
 import Loader from '../../components/loader/loader'
-import { useSelector } from 'react-redux'
-import { message } from 'antd'
-
-
 const Categories = () => {
   const [blogs, setBlogs] = useState([])
   const [filteredBlogs, setFilteredBlogs] = useState([])
   const [activeCategory, setActiveCategory] = useState('all')
   const [menuBar, setMenuBar] = useState(false)
 
-  const {user} = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   const categories = [
@@ -71,12 +66,7 @@ const toggleMenu = () => {
 }
   
 const handleBlogDetails = (id) => {
-  if(!user){
-    message.warning("please login to view details" )
-    navigate("/login")
-  }else{
-    navigate(`/blogDetails/${id}`)
-  }
+  navigate(`/blogDetails/${id}`)
  }
  
   return (
