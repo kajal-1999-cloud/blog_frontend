@@ -3,7 +3,7 @@ import './categories.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { request } from '../../utils/fetchApi'
-import { format } from 'timeago.js'
+import { formatTimeAgo } from '../../utils/formatTimeAgo'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlinePreview } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
@@ -42,7 +42,6 @@ const Categories = () => {
         const data = await request('/blog/AllBlog', 'GET')
         setBlogs(data)
         setFilteredBlogs(data)
-        console.log("blogs length",Boolean(blogs))
       } catch (error) {
         console.error(error)
       }
@@ -59,7 +58,7 @@ const Categories = () => {
         return filteredBlogs
       })
     }
-  }, [activeCategory])
+  }, [activeCategory, blogs])
 
 const toggleMenu = () => {
   setMenuBar(prev => !prev)
@@ -115,7 +114,7 @@ const handleBlogDetails = (id) => {
                  <div className='blogImage' >
 
                  <Link to="" className='link'>
-                    <img src={`https://blog-backend-4y52.onrender.com/images/${blog?.photo}`} />
+                    <img src={`https://blog-backend-4y52.onrender.com/images/${blog?.photo}`} alt={blog?.title || 'blog'} />
                   </Link>
                   <div className="categorydata">
                       <span className="category">{blog?.category}</span>
@@ -140,7 +139,7 @@ const handleBlogDetails = (id) => {
                     </Link>
                     <div className="authorAndCreatedAt">
                       <p><span>Author:</span> {blog?.userId?.username}</p>
-                      <p><span>Created:</span> {format(blog?.createdAt)}</p>
+                      <p><span>Created:</span> {formatTimeAgo(blog?.createdAt)}</p>
                     </div>
                   </div>
                  </div>

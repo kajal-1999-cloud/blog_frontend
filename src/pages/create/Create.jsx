@@ -3,7 +3,7 @@ import  './create.css'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { request } from '../../utils/fetchApi'
 
 const Create = () => {

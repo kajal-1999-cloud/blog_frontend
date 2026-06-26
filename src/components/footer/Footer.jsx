@@ -18,19 +18,19 @@ function Footer() {
         BloggerSpace<span>.</span>
       </h2>
       <div className="social-links">
-      <a href="https://github.com/kajal-1999-cloud" target="_blank" >
+      <a href="https://github.com/kajal-1999-cloud" target="_blank" rel="noreferrer">
           <GitHubIcon className="social-link" />
         </a>
-        <a href="/" target="_blank">
+        <a href="/" target="_blank" rel="noreferrer">
           <FacebookIcon className="social-link" />
         </a>
-        <a href="mailto:kajalg1401@gmail.com" target="_blank">
+        <a href="mailto:kajalg1401@gmail.com" target="_blank" rel="noreferrer">
           <EmailIcon className="social-link" />
         </a>
-        <a href="/" target="_blank">
+        <a href="/" target="_blank" rel="noreferrer">
           <TwitterIcon className="social-link" />
         </a>
-        <a href="https://www.instagram.com/kajalg1401/" target="_blank" >
+        <a href="https://www.instagram.com/kajalg1401/" target="_blank" rel="noreferrer">
   
           <InstagramIcon className="social-link" />
         </a>

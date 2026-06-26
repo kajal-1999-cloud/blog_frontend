@@ -13,17 +13,27 @@ export default function Comments({ blogId, token, user }) {
   const navigate = useNavigate()
 
   useEffect(() => {
+    if (!blogId) return
+
     socket.emit("joinBlog", blogId)
 
     const fetchComments = async () => {
-      const data = await request(`/comments/${blogId}`, "GET")
-      setComments(data)
+      try {
+        const data = await request(`/comments/${blogId}`, "GET")
+        setComments(Array.isArray(data) ? data : [])
+      } catch (error) {
+        console.error(error)
+        setComments([])
+      }
     }
 
     fetchComments()
 
     socket.on("newComment", (comment) => {
-      setComments((prev) => [...prev, comment])
+      setComments((prev) => [
+        ...(Array.isArray(prev) ? prev : []),
+        comment,
+      ])
     })
 
     return () => socket.off("newComment")
@@ -51,8 +61,7 @@ export default function Comments({ blogId, token, user }) {
     setText("")
   }
 
-  // const tree = buildCommentTree(comments)
-  const tree =[]
+  const tree = buildCommentTree(comments)
 
   return (
     <div className="commentsSection">

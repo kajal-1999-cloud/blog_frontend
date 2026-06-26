@@ -3,13 +3,10 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
-import Footer from '../../components/footer/Footer'
-import Navbar from '../../components/navbar/Navbar'
 import { request } from '../../utils/fetchApi'
 import  './update.css'
 
 const UpdateBlog = () => {
-  const [blogDetails, setBlogDetails] = useState("")
   const [title, setTitle] = useState("")
   const [desc, setDesc] = useState("")
   const [category, setCategory] = useState("")
@@ -33,7 +30,6 @@ const UpdateBlog = () => {
       try {
         const options = {'Authorization': `Bearer ${token}`}
         const data = await request(`/blog/find/${id}`, 'GET', options)
-        setBlogDetails(data)
         setTitle(data.title)
         setDesc(data.desc)
         setCategory(data.category)
@@ -43,7 +39,7 @@ const UpdateBlog = () => {
       }
     }
     fetchBlogDetails()
-  }, [id])
+  }, [id, token])
 
 
   const handleUpdateBlog = async (e) => {

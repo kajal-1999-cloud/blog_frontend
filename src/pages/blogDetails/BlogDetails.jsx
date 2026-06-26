@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { request } from "../../utils/fetchApi";
 import Footer from "../../components/footer/Footer";
-import { format } from "timeago.js";
+import { formatTimeAgo } from "../../utils/formatTimeAgo";
 import {
   AiFillEdit,
   AiFillLike,
@@ -69,6 +69,7 @@ function BlogDetails() {
           </Link>
           <img
             src={`https://blog-backend-4y52.onrender.com/images/${blogDetails?.photo}`}
+            alt={blogDetails?.title || 'blog'}
           />
           <div className="titleAndControls">
             <h3 className="title">{blogDetails?.title}</h3>
@@ -116,7 +117,7 @@ function BlogDetails() {
               <span>Author:</span> {blogDetails?.userId?.username}
             </span>
             <span>
-              <span>Created At:</span> {format(blogDetails?.createdAt)}
+              <span>Created At:</span> {formatTimeAgo(blogDetails?.createdAt)}
             </span>
           </div>
       <Comments blogId={blogDetails?._id} token={token} user={user} />

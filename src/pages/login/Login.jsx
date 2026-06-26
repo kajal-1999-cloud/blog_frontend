@@ -1,14 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { request } from "../../utils/fetchApi";
 import "./login.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 function Login() {
   const [email, setEmail] = useState("");

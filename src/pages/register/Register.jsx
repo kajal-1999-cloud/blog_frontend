@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { request } from '../../utils/fetchApi'
 import { register } from '../../redux/authSlice'
 import {useDispatch} from 'react-redux'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const Register = () => {
   const [username, setUsername] = useState("")

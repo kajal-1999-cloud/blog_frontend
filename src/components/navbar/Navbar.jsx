@@ -50,7 +50,7 @@ const Navbar = () => {
           <li className='listItem'> <Link to='/create' className='create'>CREATE</Link></li>
         </ul>
         <div className='right'>
-          <img src={womanImg} className='img' />
+          <img src={womanImg} className='img' alt="profile" />
           <IoIosArrowDown className="laptopVeiw" onClick={() => setShowModal(prev => !prev)} />
           {showModal &&
             <div className='modal laptopVeiw'>

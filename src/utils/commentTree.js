@@ -1,12 +1,14 @@
 export const buildCommentTree = (comments) => {
+  if (!Array.isArray(comments)) return []
+
   const map = {}
   const roots = []
 
-  comments?.forEach((c) => {
+  comments.forEach((c) => {
     map[c._id] = { ...c, replies: [] }
   })
 
-  comments?.forEach((c) => {
+  comments.forEach((c) => {
     if (c.parentId) {
       map[c.parentId]?.replies.push(map[c._id])
     } else {

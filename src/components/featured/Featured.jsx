@@ -5,7 +5,7 @@ import { AiFillLike } from 'react-icons/ai'
 import { request } from '../../utils/fetchApi'
 import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/loader'
-import { format } from 'timeago.js'
+import { formatTimeAgo } from '../../utils/formatTimeAgo'
 import defaultPic1 from '../../assets/defaultPic1.jpg'
 import defaultPic3 from '../../assets/defaultPic3.jpg'
 import defaultPic2 from '../../assets/defaultPic2.jpg'
@@ -38,11 +38,9 @@ const FeaturedBlogs = () => {
         setTimeout(() => {
           setfeatured(featuredData)
         }, 2700)
-        console.log("featured response", data)
       } catch (error) {
         console.log(error)
       }
-      console.log('featured', featured)
     }
     fetchData()
   }, [])
@@ -61,7 +59,7 @@ const FeaturedBlogs = () => {
                     <div className='blogImage'>
                      <div onClick={()=>handleBlogDetails(blogElement?._id)}>
                          <Link to='' className='link'>
-                        <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} />
+                        <img src={`https://blog-backend-4y52.onrender.com/images/${blogElement?.photo}`} alt={blogElement?.title || 'blog'} />
                       </Link>
                       </div>
                     </div>
@@ -80,7 +78,7 @@ const FeaturedBlogs = () => {
                     <p className='blogDesc'>{blogElement?.desc}</p>
                     <div className='authorTime'>
                       <span><span>Author:</span> {blogElement?.userId.username}</span>
-                      <span><span>Created:</span>  {format(blogElement?.createdAt)}</span>
+                      <span><span>Created:</span>  {formatTimeAgo(blogElement?.createdAt)}</span>
                     </div>
                   </div>
                 </div>
@@ -116,7 +114,7 @@ const FeaturedBlogs = () => {
                           </div>
                         <div className='authorTime'>
                           <span><span>Author:</span> {blogElement?.userId.username}</span>
-                          <span><span>Created:</span>  {format(blogElement?.createdAt)}</span>
+                          <span><span>Created:</span>  {formatTimeAgo(blogElement?.createdAt)}</span>
                         </div>
                       </div>
                 </div>
@@ -135,7 +133,7 @@ const FeaturedBlogs = () => {
             <div className="mainBlog" data-aos="zoom-in">
               <div className='blogImage'>
                 <Link to='' className='link'>
-                  <img src={defaultPic1} />
+                  <img src={defaultPic1} alt="featured blog placeholder" />
                 </Link>
               </div>
               <div className="mainBlogData">
